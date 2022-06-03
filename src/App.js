@@ -2,7 +2,10 @@ import "./App.css";
 import "./Components/Search";
 import Table from "./Components/Table";
 import Search from "./Components/Search";
+import { useState } from "react";
 function App() {
+  const [isChecked, setIsChecked] = useState(false);
+
   let productsList = {
     headers: ["Name", "Price"],
     products: [
@@ -44,10 +47,17 @@ function App() {
       },
     ],
   };
+
+  function onChangeHandler() {
+    console.log("Before set state" + isChecked);
+    setIsChecked(!isChecked);
+    console.log("After set state" + isChecked);
+  }
+
   return (
     <div className='main'>
       <Search type={"text"} placeholder={"Search products"} />
-      <Search type={"checkbox"}>
+      <Search type={"checkbox"} onchange={onChangeHandler}>
         <label>Only Show Products in Stock</label>
       </Search>
       <Table productData={productsList} />
