@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const Search = (props) => {
-  return (
-    <div className="inputName">
-          <input type={props.type} placeholder={props.placeholder}></input>
-      {props.children}
-      </div>
-  )
-}
+	return (
+		<div className='inputName'>
+			<input type={props.type} placeholder={props.placeholder} />
+			{props.children}
+		</div>
+	);
+};
 
 export default Search;
