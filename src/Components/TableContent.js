@@ -7,7 +7,7 @@ const TableContent = (props) => {
   ];
 
   return distinctCat.map((disCategory) => (
-    <React.Fragment>
+    <React.Fragment key={disCategory}>
       <tr>
         <th colSpan='2'>{disCategory}</th>
       </tr>

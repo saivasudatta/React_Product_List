@@ -47,20 +47,18 @@ function App() {
       },
     ],
   };
-
+  // const [displayTableData, setDisplayTableData] = useState(productsList);
   function onChangeHandler() {
-    console.log("Before set state" + isChecked);
     setIsChecked(!isChecked);
-    console.log("After set state" + isChecked);
   }
 
   return (
     <div className='main'>
       <Search type={"text"} placeholder={"Search products"} />
-      <Search type={"checkbox"} onchange={onChangeHandler}>
+      <Search type={"checkbox"} onChange={onChangeHandler}>
         <label>Only Show Products in Stock</label>
       </Search>
-      <Table productData={productsList} />
+      <Table productData={productsList} checkStock = {isChecked} />
     </div>
   );
 }
