@@ -3,6 +3,17 @@ import TableContent from "./TableContent";
 
 const Table = (props) => {
   console.log(props.productData);
+
+  let filteredProductsData = props.checkStock
+    ? props.productData.products.filter(
+        (inStockProducts) => inStockProducts.stocked === props.checkStock
+      )
+    : props.productData.products;
+
+    if (props.searchProduct != null) {
+     filteredProductsData = filteredProductsData.filter((filteredPData)=>(filteredPData.name.includes(props.searchProduct)));
+      
+    }
   return (
     <div>
       <table>
@@ -14,7 +25,7 @@ const Table = (props) => {
           </tr>
         </thead>
         <tbody>
-          <TableContent
+        {/* <TableContent
             productData={
               props.checkStock
                 ? props.productData.products.filter(
@@ -22,6 +33,11 @@ const Table = (props) => {
                       inStockProducts.stocked === props.checkStock
                   )
                 : props.productData.products
+            }
+          /> */}
+          <TableContent
+            productData={
+             filteredProductsData
             }
           />
         </tbody>

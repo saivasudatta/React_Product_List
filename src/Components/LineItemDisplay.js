@@ -3,8 +3,8 @@ import "./LineItemDisplay.css";
 
 const LineItemDisplay = (props) => {
   return props.displayData.map(({ name, price, stocked }, index) => (
-    <tr key={index} className={stocked? "":"noStock"} >
-      <td>{name}</td>
+    <tr key={index}  >
+      <td className={stocked? "":"noStock"}>{name}</td>
       {/* <td>{stocked.toString()}</td> */}
 
       <td>{price}</td>

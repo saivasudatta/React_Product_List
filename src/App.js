@@ -5,6 +5,7 @@ import Search from "./Components/Search";
 import { useState } from "react";
 function App() {
   const [isChecked, setIsChecked] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   let productsList = {
     headers: ["Name", "Price"],
@@ -51,14 +52,17 @@ function App() {
   function onChangeHandler() {
     setIsChecked(!isChecked);
   }
+  function onSearchHandler(e) {
+    setSearchText(e.target.value);
+  }
 
   return (
     <div className='main'>
-      <Search type={"text"} placeholder={"Search products"} />
+      <Search type={"text"} placeholder={"Search products"} onChange = {onSearchHandler} />
       <Search type={"checkbox"} onChange={onChangeHandler}>
         <label>Only Show Products in Stock</label>
       </Search>
-      <Table productData={productsList} checkStock = {isChecked} />
+      <Table productData={productsList} checkStock = {isChecked} searchProduct = {searchText} />
     </div>
   );
 }
